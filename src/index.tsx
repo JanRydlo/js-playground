@@ -42,16 +42,21 @@ const App = () => {
             }
         });
 
-        console.log(result);
         setCode(result.outputFiles[0].text);
     }
 
+    const html = `
+    <script>
+        ${code}
+    </script>
+    `
   return <div>
       <textarea value={input} onChange={(e) => setInput(e.target.value)}></textarea>
       <div>
           <button onClick={onCLick} className="btn btn-primary">Submit</button>
       </div>
       <pre>{code}</pre>
+      <iframe sandbox="allow-scripts" srcDoc={html}></iframe>
   </div>
 };
 
